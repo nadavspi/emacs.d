@@ -41,14 +41,6 @@
 (require-package 'scss-mode)
 (setq-default scss-compile-at-save nil)
 
-
-
-;;; LESS
-(require-package 'less-css-mode)
-(when (featurep 'js2-mode)
-  (require-package 'skewer-less))
-
-
 
 ;;; Auto-complete CSS keywords
 (after-load 'auto-complete

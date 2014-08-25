@@ -1,15 +1,29 @@
-(require-package 'evil)
+(require 'linum-relative)
+(setq linum-format "%d ")
 
-(setq evil-search-module 'evil-search
-      evil-want-C-u-scroll t
-      evil-want-C-w-in-emacs-state t)
+;(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+;(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;(unless (display-graphic-p) (menu-bar-mode -1))
 
-(require 'evil)
-(evil-mode t)
+(require 'powerline)
+(powerline-default-theme)
 
-; add line numbers
-(global-linum-mode t)
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :height 180)
+  (set-default-font "Input Sans")
 
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(unless (display-graphic-p) (menu-bar-mode -1))
+  (defun use-proportional-font ()
+    (interactive)
+    (face-remap-add-relative 'default '(:family "Input Sans"))
+  )
+
+  (defun use-monospace-font ()
+    (interactive)
+    (face-remap-add-relative 'default '(:family "Input Mono"))
+  ))
+
+(add-hook 'dired-mode-hook 'use-monospace-font)
+;abcd
+;xyd
+
+(provide 'init-local)
