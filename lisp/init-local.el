@@ -1,5 +1,7 @@
 (require 'linum-relative)
-(setq linum-format "%d ")
+(setq linum-format "%3s ")
+(linum-on)
+(setq linum-format 'linum-relative)
 
 ;(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ;(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -10,7 +12,7 @@
 
 (when (eq system-type 'darwin)
   (set-face-attribute 'default nil :height 180)
-  (set-default-font "Input Sans")
+  (set-default-font "input sans")
 
   (defun use-proportional-font ()
     (interactive)
@@ -23,7 +25,5 @@
   ))
 
 (add-hook 'dired-mode-hook 'use-monospace-font)
-;abcd
-;xyd
 
 (provide 'init-local)
